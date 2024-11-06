@@ -16,6 +16,7 @@
 		E24580912CDBB85C003ABA8E /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E24580902CDBB85C003ABA8E /* OpenSans-Regular.ttf */; };
 		E24580932CDBB871003ABA8E /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E24580922CDBB871003ABA8E /* OpenSans-Bold.ttf */; };
 		E24580952CDBB883003ABA8E /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E24580942CDBB883003ABA8E /* OpenSans-ExtraBold.ttf */; };
+		E24580972CDBB97E003ABA8E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580962CDBB979003ABA8E /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E24580902CDBB85C003ABA8E /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		E24580922CDBB871003ABA8E /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		E24580942CDBB883003ABA8E /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		E24580962CDBB979003ABA8E /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		E245808C2CDBB44A003ABA8E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E24580962CDBB979003ABA8E /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				E24580852CDBB383003ABA8E /* AppDelegate.swift in Sources */,
 				E24580862CDBB383003ABA8E /* SceneDelegate.swift in Sources */,
 				E24580872CDBB383003ABA8E /* ViewController.swift in Sources */,
+				E24580972CDBB97E003ABA8E /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
