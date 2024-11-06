@@ -13,6 +13,9 @@
 		E24580852CDBB383003ABA8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580772CDBB383003ABA8E /* AppDelegate.swift */; };
 		E24580862CDBB383003ABA8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E245807E2CDBB383003ABA8E /* SceneDelegate.swift */; };
 		E24580872CDBB383003ABA8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E245807F2CDBB383003ABA8E /* ViewController.swift */; };
+		E24580912CDBB85C003ABA8E /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E24580902CDBB85C003ABA8E /* OpenSans-Regular.ttf */; };
+		E24580932CDBB871003ABA8E /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E24580922CDBB871003ABA8E /* OpenSans-Bold.ttf */; };
+		E24580952CDBB883003ABA8E /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E24580942CDBB883003ABA8E /* OpenSans-ExtraBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		E245807C2CDBB383003ABA8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E245807E2CDBB383003ABA8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E245807F2CDBB383003ABA8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E24580902CDBB85C003ABA8E /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		E24580922CDBB871003ABA8E /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		E24580942CDBB883003ABA8E /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,7 @@
 		E245808B2CDBB434003ABA8E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E245808F2CDBB81E003ABA8E /* Fonts */,
 				E24580782CDBB383003ABA8E /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -121,6 +128,16 @@
 				E245807D2CDBB383003ABA8E /* Main.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		E245808F2CDBB81E003ABA8E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E24580902CDBB85C003ABA8E /* OpenSans-Regular.ttf */,
+				E24580922CDBB871003ABA8E /* OpenSans-Bold.ttf */,
+				E24580942CDBB883003ABA8E /* OpenSans-ExtraBold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,7 +203,10 @@
 			files = (
 				E24580812CDBB383003ABA8E /* Assets.xcassets in Resources */,
 				E24580832CDBB383003ABA8E /* LaunchScreen.storyboard in Resources */,
+				E24580912CDBB85C003ABA8E /* OpenSans-Regular.ttf in Resources */,
+				E24580932CDBB871003ABA8E /* OpenSans-Bold.ttf in Resources */,
 				E24580842CDBB383003ABA8E /* Main.storyboard in Resources */,
+				E24580952CDBB883003ABA8E /* OpenSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
