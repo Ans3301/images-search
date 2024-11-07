@@ -13,9 +13,10 @@
 		E24580862CDBB383003ABA8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E245807E2CDBB383003ABA8E /* SceneDelegate.swift */; };
 		E24580872CDBB383003ABA8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E245807F2CDBB383003ABA8E /* ViewController.swift */; };
 		E24580912CDBB85C003ABA8E /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E24580902CDBB85C003ABA8E /* OpenSans-Regular.ttf */; };
-		E24580932CDBB871003ABA8E /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E24580922CDBB871003ABA8E /* OpenSans-Bold.ttf */; };
 		E24580952CDBB883003ABA8E /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E24580942CDBB883003ABA8E /* OpenSans-ExtraBold.ttf */; };
 		E24580972CDBB97E003ABA8E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580962CDBB979003ABA8E /* UIColorExtension.swift */; };
+		E24580992CDBDFF3003ABA8E /* NoDigitsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580982CDBDFF3003ABA8E /* NoDigitsTextField.swift */; };
+		E245809B2CDC0527003ABA8E /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E245809A2CDC0527003ABA8E /* OpenSans-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +28,10 @@
 		E245807E2CDBB383003ABA8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E245807F2CDBB383003ABA8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E24580902CDBB85C003ABA8E /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
-		E24580922CDBB871003ABA8E /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		E24580942CDBB883003ABA8E /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		E24580962CDBB979003ABA8E /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		E24580982CDBDFF3003ABA8E /* NoDigitsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDigitsTextField.swift; sourceTree = "<group>"; };
+		E245809A2CDC0527003ABA8E /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				E245808E2CDBB487003ABA8E /* Storyboards */,
+				E24580982CDBDFF3003ABA8E /* NoDigitsTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -134,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				E24580902CDBB85C003ABA8E /* OpenSans-Regular.ttf */,
-				E24580922CDBB871003ABA8E /* OpenSans-Bold.ttf */,
+				E245809A2CDC0527003ABA8E /* OpenSans-SemiBold.ttf */,
 				E24580942CDBB883003ABA8E /* OpenSans-ExtraBold.ttf */,
 			);
 			path = Fonts;
@@ -203,8 +206,8 @@
 			files = (
 				E24580812CDBB383003ABA8E /* Assets.xcassets in Resources */,
 				E24580832CDBB383003ABA8E /* LaunchScreen.storyboard in Resources */,
+				E245809B2CDC0527003ABA8E /* OpenSans-SemiBold.ttf in Resources */,
 				E24580912CDBB85C003ABA8E /* OpenSans-Regular.ttf in Resources */,
-				E24580932CDBB871003ABA8E /* OpenSans-Bold.ttf in Resources */,
 				E24580952CDBB883003ABA8E /* OpenSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E24580992CDBDFF3003ABA8E /* NoDigitsTextField.swift in Sources */,
 				E24580852CDBB383003ABA8E /* AppDelegate.swift in Sources */,
 				E24580862CDBB383003ABA8E /* SceneDelegate.swift in Sources */,
 				E24580872CDBB383003ABA8E /* ViewController.swift in Sources */,
