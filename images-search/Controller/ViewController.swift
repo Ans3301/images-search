@@ -148,6 +148,31 @@ final class ViewController: UIViewController {
             searchButton.heightAnchor.constraint(equalToConstant: 52),
             searchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+
+        searchButton.addTarget(self, action: #selector(present(_:)), for: .touchUpInside)
+    }
+
+    @objc private func present(_ button: UIButton) {
+        Task.detached {
+            do {
+                if let text = await self.textField.text {
+                    let preparedString = text.trimmingCharacters(in: .whitespaces).lowercased()
+                    let query = preparedString.replacingOccurrences(of: " ", with: "+")
+                    let pixabayResponse = try await fetchImagesFromAPI(query: query)
+                    await self.updatePixabayResponse(pixabayResponse: pixabayResponse)
+                }
+            } catch {}
+        }
+    }
+
+    @MainActor
+    private func updatePixabayResponse(pixabayResponse: PixabayResponse) {
+        let picturesViewController = ImagesViewController()
+        picturesViewController.pixabayResponse = pixabayResponse
+        picturesViewController.text = textField.text
+        picturesViewController.modalPresentationStyle = .overFullScreen
+        picturesViewController.modalTransitionStyle = .crossDissolve
+        present(picturesViewController, animated: true)
     }
 
     private func setupLabel() {
