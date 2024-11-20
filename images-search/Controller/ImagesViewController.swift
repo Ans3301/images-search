@@ -8,33 +8,10 @@
 import UIKit
 
 final class ImagesViewController: UIViewController {
-    private lazy var textField: NoDigitsTextField = {
-        let textField = NoDigitsTextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = UIColor(hex: "#F6F6F6")
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor(hex: "E2E2E2").cgColor
-        textField.autocapitalizationType = .none
-        textField.font = UIFont(name: "OpenSans-Regular", size: 14)
-        textField.textColor = UIColor(hex: "#2D2D2D")
-        textField.attributedPlaceholder = NSAttributedString(
-            string: "Search images",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(hex: "#747474")]
-        )
-        return textField
-    }()
-    
-    private lazy var logoLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "P"
-        label.backgroundColor = UIColor(hex: "430BE0")
-        label.layer.masksToBounds = true
-        label.layer.cornerRadius = 5
-        label.textAlignment = .center
-        label.font = UIFont(name: "Pattaya-Regular", size: 32)
-        label.textColor = UIColor(hex: "#FFFFFF")
-        return label
+    private lazy var headerView: HeaderView = {
+        let headerView = HeaderView()
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        return headerView
     }()
     
     private lazy var separator: UIView = {
@@ -46,9 +23,7 @@ final class ImagesViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     
-    private var sortedPixabayResponse: PixabayResponse!
     var pixabayResponse: PixabayResponse!
-
     var text: String?
     
     override func viewDidLoad() {
@@ -56,48 +31,21 @@ final class ImagesViewController: UIViewController {
         
         view.backgroundColor = UIColor(hex: "#FFFFFF")
         
-        sortedPixabayResponse = PixabayResponse(total: pixabayResponse.total, hits: pixabayResponse.hits.sorted {
-            if $0.previewHeight == $1.previewHeight {
-                return $0.previewWidth > $1.previewWidth
-            }
-            return $0.previewHeight < $1.previewHeight
-        })
-        
-        setupTextField()
-        setupLogoLabel()
+        setupHeaderView()
         setupCollectionView()
         setupSeparator()
     }
     
-    private func setupTextField() {
-        let imageView = UIImageView(frame: CGRect(x: 13, y: 5, width: 14, height: 14))
-        imageView.image = UIImage(named: "icon_search")?.withRenderingMode(.alwaysTemplate)
-        let imageContainerView = UIView(frame: CGRect(x: 0, y: 0, width: 32, height: 24))
-        imageContainerView.addSubview(imageView)
-        textField.leftView = imageContainerView
-        textField.leftViewMode = .always
-        textField.tintColor = UIColor(hex: "#575757")
+    private func setupHeaderView() {
+        headerView.setText(text: text)
         
-        textField.text = text
-
-        view.addSubview(textField)
+        view.addSubview(headerView)
 
         NSLayoutConstraint.activate([
-            textField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            textField.topAnchor.constraint(equalTo: view.topAnchor, constant: 55),
-            textField.widthAnchor.constraint(equalToConstant: 215),
-            textField.heightAnchor.constraint(equalToConstant: 52)
-        ])
-    }
-    
-    private func setupLogoLabel() {
-        view.addSubview(logoLabel)
-
-        NSLayoutConstraint.activate([
-            logoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 55),
-            logoLabel.widthAnchor.constraint(equalToConstant: 52),
-            logoLabel.heightAnchor.constraint(equalToConstant: 52),
-            logoLabel.rightAnchor.constraint(equalTo: textField.leftAnchor, constant: -16)
+            headerView.topAnchor.constraint(equalTo: view.topAnchor),
+            headerView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 116)
         ])
     }
     
@@ -115,7 +63,7 @@ final class ImagesViewController: UIViewController {
         collectionView.backgroundColor = UIColor(hex: "#F6F6F6")
         
         collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerCollectionReusableView")
-        collectionView.register(PictureCollectionViewCell.self, forCellWithReuseIdentifier: "pictureCollectionViewCell")
+        collectionView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "imageCollectionViewCell")
         
         view.addSubview(collectionView)
         
@@ -123,7 +71,7 @@ final class ImagesViewController: UIViewController {
         collectionView.dataSource = self
         
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 16),
+            collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -134,7 +82,7 @@ final class ImagesViewController: UIViewController {
         view.addSubview(separator)
         
         NSLayoutConstraint.activate([
-            separator.topAnchor.constraint(equalTo: view.topAnchor, constant: 123),
+            separator.topAnchor.constraint(equalTo: view.topAnchor, constant: 116),
             separator.widthAnchor.constraint(equalToConstant: view.bounds.size.width),
             separator.heightAnchor.constraint(equalToConstant: 1),
             separator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -144,13 +92,13 @@ final class ImagesViewController: UIViewController {
 
 extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sortedPixabayResponse.hits.count
+        return pixabayResponse.hits.count
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
-            headerView.configure(count: sortedPixabayResponse.total)
+            headerView.configure(count: pixabayResponse.total)
             return headerView
         } else {
             return UICollectionReusableView()
@@ -158,18 +106,24 @@ extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureCollectionViewCell", for: indexPath) as? PictureCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath) as? ImageCollectionViewCell else {
             fatalError("Unable to dequeue OperationCollectionViewCell")
         }
-        cell.configure(urlString: sortedPixabayResponse.hits[indexPath.item].previewURL)
+        cell.configure(urlString: pixabayResponse.hits[indexPath.item].previewURL)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let imageViewController = ImageViewController()
+        imageViewController.pixabayImage = pixabayResponse.hits[indexPath.item]
+        imageViewController.modalPresentationStyle = .overFullScreen
+        imageViewController.modalTransitionStyle = .crossDissolve
+        present(imageViewController, animated: true)
+    }
 }
 
 extension ImagesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSizeMake(CGFloat(sortedPixabayResponse.hits[indexPath.item].previewWidth), CGFloat(sortedPixabayResponse.hits[indexPath.item].previewHeight))
+        return CGSizeMake(CGFloat(pixabayResponse.hits[indexPath.item].previewWidth), CGFloat(pixabayResponse.hits[indexPath.item].previewHeight))
     }
 }

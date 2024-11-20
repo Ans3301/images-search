@@ -19,10 +19,14 @@
 		E245809B2CDC0527003ABA8E /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E245809A2CDC0527003ABA8E /* OpenSans-SemiBold.ttf */; };
 		E245809D2CDD0285003ABA8E /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E245809C2CDD0285003ABA8E /* ImagesViewController.swift */; };
 		E245809F2CDD06A3003ABA8E /* Pattaya-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E245809E2CDD06A3003ABA8E /* Pattaya-Regular.ttf */; };
-		E24580A12CDD3BC2003ABA8E /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580A02CDD3BC2003ABA8E /* PictureCollectionViewCell.swift */; };
+		E24580A12CDD3BC2003ABA8E /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580A02CDD3BC2003ABA8E /* ImageCollectionViewCell.swift */; };
 		E24580A42CDE2D0C003ABA8E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E24580A32CDE2D0C003ABA8E /* Kingfisher */; };
 		E24580A62CE21341003ABA8E /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580A52CE21341003ABA8E /* HeaderCollectionReusableView.swift */; };
 		E24580A82CE23447003ABA8E /* fetchImagesFromAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580A72CE23438003ABA8E /* fetchImagesFromAPI.swift */; };
+		E24580AA2CE244FE003ABA8E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580A92CE244FE003ABA8E /* ImageViewController.swift */; };
+		E24580AC2CE259C4003ABA8E /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580AB2CE259C4003ABA8E /* HeaderView.swift */; };
+		E24580AE2CE8E200003ABA8E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580AD2CE8E200003ABA8E /* FooterView.swift */; };
+		E24580B02CECF02C003ABA8E /* ZoomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580AF2CECF02C003ABA8E /* ZoomScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,9 +44,13 @@
 		E245809A2CDC0527003ABA8E /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		E245809C2CDD0285003ABA8E /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		E245809E2CDD06A3003ABA8E /* Pattaya-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pattaya-Regular.ttf"; sourceTree = "<group>"; };
-		E24580A02CDD3BC2003ABA8E /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
+		E24580A02CDD3BC2003ABA8E /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E24580A52CE21341003ABA8E /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		E24580A72CE23438003ABA8E /* fetchImagesFromAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetchImagesFromAPI.swift; sourceTree = "<group>"; };
+		E24580A92CE244FE003ABA8E /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		E24580AB2CE259C4003ABA8E /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		E24580AD2CE8E200003ABA8E /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		E24580AF2CECF02C003ABA8E /* ZoomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +109,11 @@
 			children = (
 				E245808E2CDBB487003ABA8E /* Storyboards */,
 				E24580982CDBDFF3003ABA8E /* NoDigitsTextField.swift */,
-				E24580A02CDD3BC2003ABA8E /* PictureCollectionViewCell.swift */,
+				E24580A02CDD3BC2003ABA8E /* ImageCollectionViewCell.swift */,
 				E24580A52CE21341003ABA8E /* HeaderCollectionReusableView.swift */,
+				E24580AB2CE259C4003ABA8E /* HeaderView.swift */,
+				E24580AD2CE8E200003ABA8E /* FooterView.swift */,
+				E24580AF2CECF02C003ABA8E /* ZoomScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -112,6 +123,7 @@
 			children = (
 				E245807F2CDBB383003ABA8E /* ViewController.swift */,
 				E245809C2CDD0285003ABA8E /* ImagesViewController.swift */,
+				E24580A92CE244FE003ABA8E /* ImageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -242,12 +254,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				E24580A62CE21341003ABA8E /* HeaderCollectionReusableView.swift in Sources */,
-				E24580A12CDD3BC2003ABA8E /* PictureCollectionViewCell.swift in Sources */,
+				E24580A12CDD3BC2003ABA8E /* ImageCollectionViewCell.swift in Sources */,
+				E24580AA2CE244FE003ABA8E /* ImageViewController.swift in Sources */,
 				E24580992CDBDFF3003ABA8E /* NoDigitsTextField.swift in Sources */,
 				E24580852CDBB383003ABA8E /* AppDelegate.swift in Sources */,
+				E24580B02CECF02C003ABA8E /* ZoomScrollView.swift in Sources */,
 				E24580862CDBB383003ABA8E /* SceneDelegate.swift in Sources */,
 				E24580872CDBB383003ABA8E /* ViewController.swift in Sources */,
+				E24580AC2CE259C4003ABA8E /* HeaderView.swift in Sources */,
 				E24580972CDBB97E003ABA8E /* UIColorExtension.swift in Sources */,
+				E24580AE2CE8E200003ABA8E /* FooterView.swift in Sources */,
 				E24580A82CE23447003ABA8E /* fetchImagesFromAPI.swift in Sources */,
 				E245809D2CDD0285003ABA8E /* ImagesViewController.swift in Sources */,
 			);

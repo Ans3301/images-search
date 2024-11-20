@@ -167,12 +167,22 @@ final class ViewController: UIViewController {
 
     @MainActor
     private func updatePixabayResponse(pixabayResponse: PixabayResponse) {
-        let picturesViewController = ImagesViewController()
-        picturesViewController.pixabayResponse = pixabayResponse
-        picturesViewController.text = textField.text
-        picturesViewController.modalPresentationStyle = .overFullScreen
-        picturesViewController.modalTransitionStyle = .crossDissolve
-        present(picturesViewController, animated: true)
+        let imagesViewController = ImagesViewController()
+        imagesViewController.pixabayResponse = sortPixabayResponse(pixabayResponse: pixabayResponse)
+        imagesViewController.text = textField.text
+        imagesViewController.modalPresentationStyle = .overFullScreen
+        imagesViewController.modalTransitionStyle = .crossDissolve
+        present(imagesViewController, animated: true)
+    }
+    
+    private func sortPixabayResponse(pixabayResponse: PixabayResponse) -> PixabayResponse {
+        let sortedPixabayResponse = PixabayResponse(total: pixabayResponse.total, hits: pixabayResponse.hits.sorted {
+            if $0.previewHeight == $1.previewHeight {
+                return $0.previewWidth > $1.previewWidth
+            }
+            return $0.previewHeight < $1.previewHeight
+        })
+        return sortedPixabayResponse
     }
 
     private func setupLabel() {
