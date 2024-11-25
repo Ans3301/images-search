@@ -5,6 +5,7 @@
 //  Created by Мария Анисович on 06.11.2024.
 //
 
+import CropViewController
 import UIKit
 
 final class ViewController: UIViewController {
@@ -60,6 +61,19 @@ final class ViewController: UIViewController {
         return button
     }()
 
+    private lazy var selectButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.configuration = .plain()
+        button.layer.cornerRadius = 5
+        button.backgroundColor = UIColor(hex: "#430BE0")
+        button.setTitle("Select from Photos", for: .normal)
+        button.setTitleColor(UIColor(hex: "#FFFFFF"), for: .normal)
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.font = UIFont(name: "OpenSans-SemiBold", size: 18)
+        return button
+    }()
+
     private lazy var label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -78,6 +92,7 @@ final class ViewController: UIViewController {
         setupTitleLabel()
         setupTextField()
         setupSearchButton()
+        setupSelectButton()
         setupLabel()
     }
 
@@ -174,7 +189,7 @@ final class ViewController: UIViewController {
         imagesViewController.modalTransitionStyle = .crossDissolve
         present(imagesViewController, animated: true)
     }
-    
+
     private func sortPixabayResponse(pixabayResponse: PixabayResponse) -> PixabayResponse {
         let sortedPixabayResponse = PixabayResponse(total: pixabayResponse.total, hits: pixabayResponse.hits.sorted {
             if $0.previewHeight == $1.previewHeight {
@@ -183,6 +198,27 @@ final class ViewController: UIViewController {
             return $0.previewHeight < $1.previewHeight
         })
         return sortedPixabayResponse
+    }
+
+    private func setupSelectButton() {
+        view.addSubview(selectButton)
+
+        NSLayoutConstraint.activate([
+            selectButton.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 30),
+            selectButton.widthAnchor.constraint(equalToConstant: 343),
+            selectButton.heightAnchor.constraint(equalToConstant: 52),
+            selectButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+
+        selectButton.addTarget(self, action: #selector(selectButtonTapped(_:)), for: .touchUpInside)
+    }
+
+    @objc private func selectButtonTapped(_ button: UIButton) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        present(imagePicker, animated: true, completion: nil)
     }
 
     private func setupLabel() {
@@ -194,5 +230,43 @@ final class ViewController: UIViewController {
             label.heightAnchor.constraint(equalToConstant: 22),
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+    }
+}
+
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        picker.dismiss(animated: true, completion: nil)
+
+        if let selectedImage = info[.originalImage] as? UIImage {
+            let cropViewController = CropViewController(image: selectedImage)
+            cropViewController.delegate = self
+            present(cropViewController, animated: true, completion: nil)
+        }
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ViewController: CropViewControllerDelegate {
+    func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+        cropViewController.dismiss(animated: true, completion: nil)
+
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(imageSaveCompleted(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+
+    @objc func imageSaveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if error == nil {
+            showAlert(message: "Image saved successfully!")
+        } else {
+            showAlert(message: "Failed to save image.")
+        }
+    }
+
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Photo Save", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 }
