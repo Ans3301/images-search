@@ -29,6 +29,7 @@
 		E24580B02CECF02C003ABA8E /* ZoomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580AF2CECF02C003ABA8E /* ZoomScrollView.swift */; };
 		E2C927CC2CF0C97700C22E50 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = E2C927CB2CF0C97700C22E50 /* CropViewController */; };
 		E2C927CE2CF0C97700C22E50 /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = E2C927CD2CF0C97700C22E50 /* TOCropViewController */; };
+		E2C927D32CF7704500C22E50 /* CustomCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C927D22CF7703D00C22E50 /* CustomCropViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		E24580AB2CE259C4003ABA8E /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		E24580AD2CE8E200003ABA8E /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		E24580AF2CECF02C003ABA8E /* ZoomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomScrollView.swift; sourceTree = "<group>"; };
+		E2C927D22CF7703D00C22E50 /* CustomCropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCropViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		E245808A2CDBB423003ABA8E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E2C927D22CF7703D00C22E50 /* CustomCropViewController.swift */,
 				E245807F2CDBB383003ABA8E /* ViewController.swift */,
 				E245809C2CDD0285003ABA8E /* ImagesViewController.swift */,
 				E24580A92CE244FE003ABA8E /* ImageViewController.swift */,
@@ -267,6 +270,7 @@
 				E24580852CDBB383003ABA8E /* AppDelegate.swift in Sources */,
 				E24580B02CECF02C003ABA8E /* ZoomScrollView.swift in Sources */,
 				E24580862CDBB383003ABA8E /* SceneDelegate.swift in Sources */,
+				E2C927D32CF7704500C22E50 /* CustomCropViewController.swift in Sources */,
 				E24580872CDBB383003ABA8E /* ViewController.swift in Sources */,
 				E24580AC2CE259C4003ABA8E /* HeaderView.swift in Sources */,
 				E24580972CDBB97E003ABA8E /* UIColorExtension.swift in Sources */,

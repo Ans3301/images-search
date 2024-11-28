@@ -5,7 +5,6 @@
 //  Created by Мария Анисович on 11.11.2024.
 //
 
-import CropViewController
 import UIKit
 
 final class ImageViewController: UIViewController {
@@ -57,7 +56,7 @@ final class ImageViewController: UIViewController {
     }
 
     @objc private func backButtonTapped(_ button: UIButton) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 
     private func setupZoomScrollView() {
@@ -110,7 +109,7 @@ final class ImageViewController: UIViewController {
             .print
         ]
 
-        present(activityViewController, animated: true, completion: nil)
+        present(activityViewController, animated: true)
     }
 
     @objc private func cropButtonTapped(_ button: UIButton) {
@@ -118,31 +117,7 @@ final class ImageViewController: UIViewController {
             return
         }
 
-        let cropViewController = CropViewController(image: image)
-        cropViewController.delegate = self
-
-        present(cropViewController, animated: true, completion: nil)
-    }
-}
-
-extension ImageViewController: CropViewControllerDelegate {
-    func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
-        cropViewController.dismiss(animated: true, completion: nil)
-
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(imageSaveCompleted(_:didFinishSavingWithError:contextInfo:)), nil)
-    }
-
-    @objc func imageSaveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if error == nil {
-            showAlert(message: "Image saved successfully!")
-        } else {
-            showAlert(message: "Failed to save image.")
-        }
-    }
-
-    func showAlert(message: String) {
-        let alert = UIAlertController(title: "Photo Save", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+        let cropViewController = CustomCropViewController(image: image, previousViewController: self)
+        present(cropViewController, animated: true)
     }
 }

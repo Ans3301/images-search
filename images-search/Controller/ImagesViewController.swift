@@ -51,7 +51,7 @@ final class ImagesViewController: UIViewController {
     }
     
     @objc private func backButtonTapped(_ button: UIButton) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     private func setupCollectionView() {
