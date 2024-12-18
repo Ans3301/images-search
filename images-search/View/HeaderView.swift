@@ -37,12 +37,23 @@ final class HeaderView: UIView {
         return label
     }()
     
+    private lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 5
+        button.backgroundColor = UIColor(hex: "430BE0")
+        button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        button.tintColor = UIColor(hex: "#FFFFFF")
+        return button
+    }()
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         backgroundColor = UIColor(hex: "#FFFFFF")
         
         setupTextField()
+        setupBackButton()
         setupLogoLabel()
     }
 
@@ -69,6 +80,17 @@ final class HeaderView: UIView {
         ])
     }
     
+    private func setupBackButton() {
+        addSubview(backButton)
+
+        NSLayoutConstraint.activate([
+            backButton.topAnchor.constraint(equalTo: topAnchor, constant: 55),
+            backButton.widthAnchor.constraint(equalToConstant: 52),
+            backButton.heightAnchor.constraint(equalToConstant: 52),
+            backButton.rightAnchor.constraint(equalTo: textField.leftAnchor, constant: -16)
+        ])
+    }
+    
     private func setupLogoLabel() {
         addSubview(logoLabel)
 
@@ -76,11 +98,15 @@ final class HeaderView: UIView {
             logoLabel.topAnchor.constraint(equalTo: topAnchor, constant: 55),
             logoLabel.widthAnchor.constraint(equalToConstant: 52),
             logoLabel.heightAnchor.constraint(equalToConstant: 52),
-            logoLabel.rightAnchor.constraint(equalTo: textField.leftAnchor, constant: -16)
+            logoLabel.leftAnchor.constraint(equalTo: textField.rightAnchor, constant: 16)
         ])
     }
     
     func setText(text: String?) {
         textField.text = text
+    }
+    
+    func addBackButtonTarget(_ target: Any?, action: Selector) {
+        backButton.addTarget(target, action: action, for: .touchUpInside)
     }
 }

@@ -55,6 +55,21 @@ final class FooterView: UIView {
         return button
     }()
     
+    private lazy var cropButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 3
+        button.backgroundColor = UIColor(hex: "#FFFFFF")
+        button.tintColor = UIColor(hex: "2D2D2D")
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(hex: "430BE0").cgColor
+        button.setTitle("Crop", for: .normal)
+        button.setTitleColor(UIColor(hex: "#2D2D2D"), for: .normal)
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 14)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -63,6 +78,7 @@ final class FooterView: UIView {
         setupLicenseLabel()
         setupRulesStackView()
         setupShareButton()
+        setupCropButton()
     }
 
     required init?(coder: NSCoder) {
@@ -106,7 +122,7 @@ final class FooterView: UIView {
         addSubview(shareButton)
 
         NSLayoutConstraint.activate([
-            shareButton.topAnchor.constraint(equalTo: topAnchor, constant: 53),
+            shareButton.topAnchor.constraint(equalTo: topAnchor, constant: 18),
             shareButton.widthAnchor.constraint(equalToConstant: 124),
             shareButton.heightAnchor.constraint(equalToConstant: 32),
             shareButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -16)
@@ -115,5 +131,26 @@ final class FooterView: UIView {
     
     func addShareButtonTarget(_ target: Any?, action: Selector) {
         shareButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    private func setupCropButton() {
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = UIImage(systemName: "crop")
+        configuration.imagePlacement = .leading
+        configuration.imagePadding = 4
+        cropButton.configuration = configuration
+
+        addSubview(cropButton)
+
+        NSLayoutConstraint.activate([
+            cropButton.topAnchor.constraint(equalTo: shareButton.bottomAnchor, constant: 10),
+            cropButton.widthAnchor.constraint(equalToConstant: 124),
+            cropButton.heightAnchor.constraint(equalToConstant: 32),
+            cropButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -16)
+        ])
+    }
+    
+    func addCropButtonTarget(_ target: Any?, action: Selector) {
+        cropButton.addTarget(target, action: action, for: .touchUpInside)
     }
 }

@@ -38,6 +38,7 @@ final class ImagesViewController: UIViewController {
     
     private func setupHeaderView() {
         headerView.setText(text: text)
+        headerView.addBackButtonTarget(self, action: #selector(backButtonTapped(_:)))
         
         view.addSubview(headerView)
 
@@ -47,6 +48,10 @@ final class ImagesViewController: UIViewController {
             headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 116)
         ])
+    }
+    
+    @objc private func backButtonTapped(_ button: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
     private func setupCollectionView() {
