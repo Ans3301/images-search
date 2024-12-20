@@ -27,9 +27,9 @@
 		E24580AC2CE259C4003ABA8E /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580AB2CE259C4003ABA8E /* HeaderView.swift */; };
 		E24580AE2CE8E200003ABA8E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580AD2CE8E200003ABA8E /* FooterView.swift */; };
 		E24580B02CECF02C003ABA8E /* ZoomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24580AF2CECF02C003ABA8E /* ZoomScrollView.swift */; };
-		E2C927CC2CF0C97700C22E50 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = E2C927CB2CF0C97700C22E50 /* CropViewController */; };
-		E2C927CE2CF0C97700C22E50 /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = E2C927CD2CF0C97700C22E50 /* TOCropViewController */; };
 		E2C927D32CF7704500C22E50 /* CustomCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C927D22CF7703D00C22E50 /* CustomCropViewController.swift */; };
+		E2FB6BFA2D15B92E0074BFCD /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = E2FB6BF92D15B92E0074BFCD /* CropViewController */; };
+		E2FB6BFC2D15B92E0074BFCD /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = E2FB6BFB2D15B92E0074BFCD /* TOCropViewController */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,8 +63,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E24580A42CDE2D0C003ABA8E /* Kingfisher in Frameworks */,
-				E2C927CE2CF0C97700C22E50 /* TOCropViewController in Frameworks */,
-				E2C927CC2CF0C97700C22E50 /* CropViewController in Frameworks */,
+				E2FB6BFC2D15B92E0074BFCD /* TOCropViewController in Frameworks */,
+				E2FB6BFA2D15B92E0074BFCD /* CropViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,8 +197,8 @@
 			name = "images-search";
 			packageProductDependencies = (
 				E24580A32CDE2D0C003ABA8E /* Kingfisher */,
-				E2C927CB2CF0C97700C22E50 /* CropViewController */,
-				E2C927CD2CF0C97700C22E50 /* TOCropViewController */,
+				E2FB6BF92D15B92E0074BFCD /* CropViewController */,
+				E2FB6BFB2D15B92E0074BFCD /* TOCropViewController */,
 			);
 			productName = "images-search";
 			productReference = E245804F2CDBB269003ABA8E /* images-search.app */;
@@ -230,7 +230,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				E24580A22CDE2D0C003ABA8E /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				E2C927CA2CF0C97700C22E50 /* XCRemoteSwiftPackageReference "TOCropViewController" */,
+				E2FB6BF82D15B92E0074BFCD /* XCRemoteSwiftPackageReference "TOCropViewController" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E24580502CDBB269003ABA8E /* Products */;
@@ -499,12 +499,12 @@
 				minimumVersion = 8.1.0;
 			};
 		};
-		E2C927CA2CF0C97700C22E50 /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
+		E2FB6BF82D15B92E0074BFCD /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/TimOliver/TOCropViewController.git";
+			repositoryURL = "https://github.com/Ans3301/TOCropViewController";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.7.4;
+				branch = "custom-TOCropViewController";
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -515,14 +515,14 @@
 			package = E24580A22CDE2D0C003ABA8E /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
-		E2C927CB2CF0C97700C22E50 /* CropViewController */ = {
+		E2FB6BF92D15B92E0074BFCD /* CropViewController */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E2C927CA2CF0C97700C22E50 /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			package = E2FB6BF82D15B92E0074BFCD /* XCRemoteSwiftPackageReference "TOCropViewController" */;
 			productName = CropViewController;
 		};
-		E2C927CD2CF0C97700C22E50 /* TOCropViewController */ = {
+		E2FB6BFB2D15B92E0074BFCD /* TOCropViewController */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E2C927CA2CF0C97700C22E50 /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			package = E2FB6BF82D15B92E0074BFCD /* XCRemoteSwiftPackageReference "TOCropViewController" */;
 			productName = TOCropViewController;
 		};
 /* End XCSwiftPackageProductDependency section */

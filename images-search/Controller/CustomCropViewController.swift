@@ -15,7 +15,6 @@ import UIKit
         self.init(image: image)
 
         self.previousViewController = previousViewController
-//        self.delegate = self
     }
  }
 
