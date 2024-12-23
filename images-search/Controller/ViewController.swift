@@ -5,7 +5,6 @@
 //  Created by Мария Анисович on 06.11.2024.
 //
 
-import CropViewController
 import UIKit
 
 final class ViewController: UIViewController {
@@ -218,7 +217,7 @@ final class ViewController: UIViewController {
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
-        present(imagePicker, animated: true, completion: nil)
+        present(imagePicker, animated: true)
     }
 
     private func setupLabel() {
@@ -235,38 +234,15 @@ final class ViewController: UIViewController {
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        picker.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true)
 
         if let selectedImage = info[.originalImage] as? UIImage {
-            let cropViewController = CropViewController(image: selectedImage)
-            cropViewController.delegate = self
-            present(cropViewController, animated: true, completion: nil)
+            let cropViewController = CustomCropViewController(image: selectedImage, previousViewController: self)
+            present(cropViewController, animated: true)
         }
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-}
-
-extension ViewController: CropViewControllerDelegate {
-    func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
-        cropViewController.dismiss(animated: true, completion: nil)
-
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(imageSaveCompleted(_:didFinishSavingWithError:contextInfo:)), nil)
-    }
-
-    @objc func imageSaveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if error == nil {
-            showAlert(message: "Image saved successfully!")
-        } else {
-            showAlert(message: "Failed to save image.")
-        }
-    }
-
-    func showAlert(message: String) {
-        let alert = UIAlertController(title: "Photo Save", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+        picker.dismiss(animated: true)
     }
 }
