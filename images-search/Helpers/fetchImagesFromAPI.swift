@@ -30,9 +30,14 @@ struct PixabayImage: Codable {
 }
 
 func fetchImagesFromAPI(query: String) async throws -> PixabayResponse {
-    let apiKey = "46954861-3947e7fef4f190fa1bbb73c6a"
+    guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "IMAGES_API_KEY") as? String else {
+        throw URLError(.badURL)
+    }
+
     let baseURL = "https://pixabay.com/api/"
-    var urlComponents = URLComponents(string: baseURL)!
+    guard var urlComponents = URLComponents(string: baseURL) else {
+        throw URLError(.badURL)
+    }
 
     urlComponents.queryItems = [
         URLQueryItem(name: "key", value: apiKey),
@@ -41,7 +46,9 @@ func fetchImagesFromAPI(query: String) async throws -> PixabayResponse {
         URLQueryItem(name: "per_page", value: "50")
     ]
 
-    let url = urlComponents.url!
+    guard let url = urlComponents.url else {
+        throw URLError(.badURL)
+    }
 
     let (data, _) = try await URLSession.shared.data(from: url)
 

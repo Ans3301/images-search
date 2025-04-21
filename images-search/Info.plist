@@ -11,6 +11,8 @@
 		<string>OpenSans-ExtraBold.ttf</string>
 		<string>Pattaya-Regular.ttf</string>
 	</array>
+	<key>IMAGES_API_KEY</key>
+	<string>$(IMAGES_API_KEY)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
