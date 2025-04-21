@@ -31,6 +31,9 @@ fastlane/sign&cert
 *.orig
 .svn
 
+# Secrets file
+Secrets.xcconfig
+
 # Other
 *~
 .DS_Store
