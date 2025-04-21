@@ -36,6 +36,8 @@ cd images-search
 open images-search.xcodeproj
 ```
 
+### Add Your Pixabay API Key
+
 ### Run the App
 - Open **Xcode**
 - Select your target device/simulator
